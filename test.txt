@@ -1,0 +1,16 @@
+ <div class="list-group list-group-flush mx-3 mt-4">
+        <a
+          href="<?php run('/regform', $routes)?>"
+          class="list-group-item list-group-item-action py-2 ripple <?php echo $current_page == 'regform.php' ? 'active' : null ?>"
+          aria-current="true"
+        >
+          <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Registration Form</span>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action py-2 ripple ">
+          <i class="fas fa-chart-area fa-fw me-3"></i><span>Webiste traffic</span>
+        </a>
+        <a href="<?php run('/logout', $routes)?>" class="list-group-item list-group-item-action py-2 ripple ">
+          <i class="fas fa-chart-area fa-fw me-3"></i><span>Logout</span>
+        </a>
+
+      </div>
