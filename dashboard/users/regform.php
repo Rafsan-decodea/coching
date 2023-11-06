@@ -6,14 +6,25 @@ if ($_SESSION["uid"] == 1) {
 
     ?>
 
-<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
-    <div class="wrapper wrapper--w680">
+<div class=" p-t-130 p-b-100 font-poppins">
+    <center>
+        <caption>
+            <h1><b>MASUM ICT ACADEMY</b></h1>
+        </caption>
+    </center>
+    <br>
+    <div class="wrapper wrapper--w688">
+
         <div class="card card-4">
             <div class="card-body">
-                <caption>
-                    <h1><b>MASUM ICT ACADEMY</b></h1>
-                </caption>
-                <p color="red" class="title">Registration Form</p>
+                <img src="/media/logo.jpg" align="right" height="130" width="130">
+
+                <center>
+                    <h3>
+                        <p style="color:red">Registration Form</p>
+                    </h3>
+                </center>
+                <br>
                 <form method="POST">
                     <div class="row row-space">
                         <div class="col-2">
@@ -106,9 +117,6 @@ if ($_SESSION["uid"] == 1) {
 
 
 <?php
-
+include '../extra/fotter.php';
 }
 ?>
-
-
-<?php include '../extra/fotter.php';?>

@@ -146,7 +146,7 @@
         <a href="/" class="brand-link">
             <img src="/dashboard/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle "
                 style="opacity: .8">
-            <span class="brand-text font-weight-light">Management System</span>
+            <span class="brand-text font-weight-light">Coaching</span>
         </a>
 
         <!-- Sidebar -->
@@ -155,15 +155,16 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
+
                     <?php
 $id = $_SESSION["id"];
-    $sql = "select picture from users_data  where uid = $id";
-    $result = $db->query($sql);
-    while ($row = $result->fetch_assoc()) {
-        ?>
-                    <img height="100" width="100" src="<?php if ($row["picture"] == "") {echo "/dashboard/dist/img/user2-160x160.jpg";} else {echo "/dashboard/images/" . $row["picture"];}
-        ?>" style="opacity: .9">
-                    <?php }?>
+    // $sql = "select picture from users_data  where uid = $id";
+    // $result = $db->query($sql);
+    //  while ($row = $result->fetch_assoc()) {
+    ?>
+                    <img height="100" width="100" src="<?php //if ($row["picture"] == "") {echo "/dashboard/dist/img/user2-160x160.jpg";} else {echo "/dashboard/images/" . $row["picture"];}
+    ?>" style="opacity: .9">
+
                 </div>
                 <div class="info">
                     <a href="#" class="d-block"><?php echo $_SESSION['name'] ?></a>
@@ -212,7 +213,8 @@ $id = $_SESSION["id"];
             </nav>
             <!-- /.sidebar-menu -->
         </div>
-        <?php }
+        <?php }?>
+        <?php
 if ($_SESSION["uid"] == 0) {
     ?>
         <div class="sidebar">
@@ -288,24 +290,6 @@ if ($_SESSION["uid"] == 0) {
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <!-- <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Dashboard v2</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v2</li>
-            </ol>
-          </div><
-        </div>
-      </div>>
-    </div> -->
-        <!-- /.content-header -->
 
-        <!-- Main content -->
 
         <section class="content">

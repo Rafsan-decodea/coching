@@ -13,7 +13,7 @@ class DB
     public $username = "root";
     public $password = "rafsan123";
     // public $password = "";
-    public $dbname = "ahwikhschool";
+    public $dbname = "coching";
     public $conn;
 
     public function __construct()

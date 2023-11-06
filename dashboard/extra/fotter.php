@@ -13,7 +13,7 @@
 <!-- Main Footer -->
 <footer class="main-footer">
     <strong>Help Line:</strong>
-    Name: Abdullah Al Mamun(Computer Lab Operator) : +880 1671-766197
+    <strong>Masum Niloy</strong> (Coaching Admin) : +8801776657502
 
 
     <!-- <div class="float-right d-none d-sm-inline-block">
@@ -65,7 +65,7 @@ $.widget.bridge('uibutton', $.ui.button)
 <script src="/dashboard/users/vendor/datepicker/daterangepicker.js"></script>
 
 <!-- Main JS-->
-<script src="js/global.js"></script>
+<script src="/dashboard/users/js/global.js"></script>
 
 
 <!-- REQUIRED SCRIPTS -->

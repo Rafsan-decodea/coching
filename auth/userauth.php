@@ -8,7 +8,8 @@ run('/db', $routes);
 
 if (isset($_POST["submit"])) {
     $db = new DB();
-    $sql = "SELECT * FROM users WHERE phone = '" . $_POST["phonenumber"] . "'";
+    $password = $_POST["phonenumber"];
+    $sql = "SELECT * FROM users WHERE phone = $password";
 
     $result = $db->query($sql);
 

@@ -43,39 +43,41 @@ if (isset($_SESSION["id"])) {
                     <img src="media/logo.jpg" alt="IMG">
                 </div>
 
-                <form method="post" action="" class="login100-form validate-form">
+                <form method="post" action="<?php echo run("/authuser", $routes) ?>"
+                    class="login100-form validate-form">
                     <span class="login100-form-title">
                         Member Login
                     </span>
-
+                    <br>
+                    <center>
+                        <p style="color:red"><?php echo $_GET["message"]; ?></p>
+                    </center>
                     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="text" name="email" placeholder="Email">
+                        <input class="input100" type="text" name="phonenumber" placeholder="phone">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
-                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <i class="fa fa-phone" aria-hidden="true"></i>
                         </span>
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="input100" type="password" name="pass" placeholder="Password">
+                        <input class="input100" type="password" name="password" placeholder="Password">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-lock" aria-hidden="true"></i>
                         </span>
                     </div>
-
                     <div class="container-login100-form-btn">
-                        <button class="login100-form-btn">
+                        <button type="submit" name="submit" class="login100-form-btn">
                             Login
                         </button>
                     </div>
-
                     <div class="text-center p-t-12">
                         <span class="txt1">
                             Forgot
                         </span>
                         <a class="txt2" href="#">
-                            Username / Password?
+
                         </a>
                     </div>
 
@@ -85,7 +87,10 @@ if (isset($_SESSION["id"])) {
                             <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
                         </a>
                     </div>
+
+
                 </form>
+
             </div>
         </div>
     </div>
