@@ -61,11 +61,13 @@ if (isset($_SESSION["id"])) {
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="input100" type="password" name="password" placeholder="Password">
+                        <input class="input100" id="password" type="password" name="password" placeholder="Password">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-lock" aria-hidden="true"></i>
                         </span>
+                        <label for="showPassword">Show Password</label>
+                        <input type="checkbox" id="showPassword">
                     </div>
                     <div class="container-login100-form-btn">
                         <button type="submit" name="submit" class="login100-form-btn">
@@ -94,7 +96,20 @@ if (isset($_SESSION["id"])) {
             </div>
         </div>
     </div>
+    <script>
+    function togglePasswordVisibility() {
+        var passwordField = document.getElementById("password");
+        var showPasswordCheckbox = document.getElementById("showPassword");
 
+        showPasswordCheckbox.addEventListener("change", function() {
+            if (showPasswordCheckbox.checked) {
+                passwordField.type = "text"; // Show the password
+            } else {
+                passwordField.type = "password"; // Hide the password
+            }
+        });
+    }
+    </script>
 
 
 
