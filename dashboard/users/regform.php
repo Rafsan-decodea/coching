@@ -88,9 +88,31 @@ if ($_SESSION["uid"] == 1) {
                         </div>
                     </div>
                     <label class="label">Subject </label>
+                    <style>
+                    select[multiple] {
+                        width: 200px;
+                        /* Set your desired width */
+                    }
+
+                    select option:selected {
+                        background-color: black;
+                        color: white;
+                    }
+                    </style>
+                    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                    <script>
+                    $(document).ready(function() {
+                        $('select[multiple]').on('change', function() {
+                            $('option:selected', this).css('background-color', 'black').css('color',
+                                'white');
+                            $('option:not(:selected)', this).css('background-color', '').css('color',
+                                ''); // Reset other options
+                        });
+                    });
+                    </script>
                     <div class="input-group">
                         <div class="rs-select2 js-select-simple select--no-search">
-                            <select name="subject[]" multiple="multiple" size="4" required>
+                            <select style="color:black" name="subject[]" multiple="multiple" size="4" required>
                                 <option disabled="disabled" selected="selected">Choose option</option>
                                 <option>ICT</option>
                                 <option>Bangla</option>
