@@ -4,10 +4,10 @@ class DB
 {
 
     // public $server = "localhost";
-    // public $username = "ahwikhsc_datab";
+    // public $username = "dcodemaf_db";
     // public $password = "@#Rafsan123";
     // // public $password = "";
-    // public $dbname = "ahwikhsc_db";
+    // public $dbname = "dcodemaf_coaching";
 
     public $server = "localhost";
     public $username = "root";

@@ -13,8 +13,14 @@ if ($_SESSION["uid"] == 1) {
         </caption>
     </center>
     <br>
-    <div class="wrapper wrapper--w688">
-
+    <style>
+    .center {
+        width: 688px;
+        /* Adjust the width as needed */
+        margin: 0 auto;
+    }
+    </style>
+    <div class="wrapper center wrapper--w688">
         <div class="card card-4">
             <div class="card-body">
                 <img src="/media/logo.jpg" align="right" height="130" width="130">
@@ -25,23 +31,24 @@ if ($_SESSION["uid"] == 1) {
                     </h3>
                 </center>
                 <br>
+
                 <form method="POST">
-                    <div class="row row-space">
-                        <div class="col-2">
+                    <div class="row ">
+                        <div class="col-md-6">
                             <div class="input-group">
                                 <label class="label">first name</label>
                                 <input class="input--style-4" type="text" name="first_name" required>
                             </div>
                         </div>
-                        <div class="col-2">
+                        <div class="col-md-6">
                             <div class="input-group">
                                 <label class="label">last name</label>
                                 <input class="input--style-4" type="text" name="last_name" required>
                             </div>
                         </div>
                     </div>
-                    <div class="row row-space">
-                        <div class="col-2">
+                    <div class="row   ">
+                        <div class="col-md-6">
                             <div class="input-group">
                                 <label class="label">Birthday</label>
                                 <div class="input-group-icon">
@@ -66,24 +73,24 @@ if ($_SESSION["uid"] == 1) {
                             </div>
                         </div>
                     </div>
-                    <div class="row row-space">
-                        <div class="col-2">
+                    <div class="row   ">
+                        <div class="col-md-6">
                             <div class="input-group">
                                 <label class="label">Email</label>
                                 <input class="input--style-4" type="email" name="email" required>
                             </div>
                         </div>
-                        <div class="col-2">
+                        <div class="col-md-6">
                             <div class="input-group">
                                 <label class="label">Phone Number</label>
                                 <input class="input--style-4" type="number" name="phone" required>
                             </div>
                         </div>
                     </div>
+                    <label class="label">Subject </label>
                     <div class="input-group">
-                        <label class="label">Subject</label>
                         <div class="rs-select2 js-select-simple select--no-search">
-                            <select name="subject" required>
+                            <select name="subject[]" multiple="multiple" size="4" required>
                                 <option disabled="disabled" selected="selected">Choose option</option>
                                 <option>ICT</option>
                                 <option>Bangla</option>
@@ -91,14 +98,13 @@ if ($_SESSION["uid"] == 1) {
                                 <option>Physics</option>
                                 <option>Biology</option>
                                 <option>Math</option>
-                                <option>Chemistrty</option>
-
+                                <option>Chemistry</option>
                             </select>
                             <div class="select-dropdown"></div>
                         </div>
                     </div>
 
-                    <div class="input-group">
+                    <div class="input-group col-md-6">
                         <label class="label">Password</label>
 
                         <input class="input--style-4" type="Password" placeholder="Enter your Password" name="Password"
@@ -109,6 +115,7 @@ if ($_SESSION["uid"] == 1) {
                                 <button class="btn btn--radius-2 btn--blue" type="submit" required>Submit</button>
                             </div>
                 </form>
+
             </div>
         </div>
     </div>
