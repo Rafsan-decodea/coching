@@ -8,13 +8,18 @@ class DB
     // public $password = "@#Rafsan123";
     // // public $password = "";
     // public $dbname = "dcodemaf_coaching";
-
     public $server = "localhost";
     public $username = "root";
-    public $password = "rafsan123";
+    public $password = "";
     // public $password = "";
     public $dbname = "coching";
     public $conn;
+    // public $server = "localhost";
+    // public $username = "root";
+    // public $password = "rafsan123";
+    // // public $password = "";
+    // public $dbname = "coching";
+    // public $conn;
 
     public function __construct()
     {

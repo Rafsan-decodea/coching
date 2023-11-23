@@ -3,9 +3,15 @@
 <?php
 if ($_SESSION["uid"] == 1) {
 //ini_set('display_errors', 1);
-
+$uid = $_SESSION["uid"];
+$sql = "SELECT * from users_data where uid = $uid ";
+$result = $db->query($sql);
+if ($result->num_rows > 0) {
     ?>
 
+Registration Succesfully Done 
+
+<?php include '../extra/fotter.php'; } else { ?>
 <div class=" p-t-130 p-b-100 font-poppins">
     <center>
         <caption>
@@ -32,18 +38,18 @@ if ($_SESSION["uid"] == 1) {
                 </center>
                 <br>
 
-                <form method="POST">
+                <form method="POST" action="/dashboard/users/regform.php">
                     <div class="row ">
                         <div class="col-md-6">
                             <div class="input-group">
                                 <label class="label">first name</label>
-                                <input class="input--style-4" type="text" name="first_name" required>
+                                <input class="input--style-4" type="text" value="<?php echo $_SESSION["name"]?>" name="firstname" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group">
                                 <label class="label">last name</label>
-                                <input class="input--style-4" type="text" name="last_name" required>
+                                <input class="input--style-4" type="text" name="lastname" required>
                             </div>
                         </div>
                     </div>
@@ -83,7 +89,7 @@ if ($_SESSION["uid"] == 1) {
                         <div class="col-md-6">
                             <div class="input-group">
                                 <label class="label">Phone Number</label>
-                                <input class="input--style-4" type="number" name="phone" required>
+                                <input class="input--style-4" max="11" type="text" name="phone" required>
                             </div>
                         </div>
                     </div>
@@ -113,30 +119,45 @@ if ($_SESSION["uid"] == 1) {
                     <div class="input-group">
                         <div class="rs-select2 js-select-simple select--no-search">
                             <select style="color:black" name="subject[]" multiple="multiple" size="4" required>
-                                <option disabled="disabled" selected="selected">Choose option</option>
-                                <option>ICT</option>
+                                <option >ICT</option>
                                 <option>Bangla</option>
                                 <option>English</option>
                                 <option>Physics</option>
                                 <option>Biology</option>
                                 <option>Math</option>
-                                <option>Chemistry</option>
+                                <option selected="selected">Chemistry</option>
                             </select>
                             <div class="select-dropdown"></div>
                         </div>
                     </div>
 
                     <div class="input-group col-md-6">
-                        <label class="label">Password</label>
-
-                        <input class="input--style-4" type="Password" placeholder="Enter your Password" name="Password"
-                            required><br>
+                        
                         <div>
 
                             <div class="p-t-15">
-                                <button class="btn btn--radius-2 btn--blue" type="submit" required>Submit</button>
+                                <button class="btn btn--radius-2 btn--blue" type="submit" name="submit" required>Submit</button>
                             </div>
                 </form>
+                <?php 
+                  if(isset($_POST["submit"])){
+                        $id = $_SESSION["id"];
+                        $fristname = $_POST["firstname"];
+                        $lastname = $_POST["lastname"];
+                        $birthday = $_POST["birthday"];
+                        $gender = $_POST["gender"];
+                        $email = $_POST["email"];
+                        $phone = $_POST["phone"];
+                        $subject = $_POST["subject"];
+                        $subject = implode(',', $subject);
+                        $sql = "insert into users_data (uid,lastname,gender,birthday,email,phone,subject) values ($id,'$lastname','$gender','$birthday','$email','$phone','$subject')";
+                        $db->insert($sql);
+                        $sql2 = "update users set name='$fristname' where id = $id";
+                        $db->update($sql2);
+                        $_SESSION["name"]= $fristname;
+                        echo " <meta http-equiv='refresh' content='0'>";
+                  }
+                ?>
 
             </div>
         </div>
@@ -146,6 +167,7 @@ if ($_SESSION["uid"] == 1) {
 
 
 <?php
+}
 include '../extra/fotter.php';
 }
 ?>
