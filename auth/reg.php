@@ -7,7 +7,7 @@ include_once '../route/function.php';
 $routes = include_once '../route/routes.php';
 run('/db', $routes);
 $db = new DB();
-$chkphone = $_POST["phoneNumber"];
+$chkphone = $_POST["phonenumber"];
 $sql = "SELECT * from users where phone = $chkphone ";
 echo $sql;
 $result = $db->query($sql);
@@ -15,15 +15,16 @@ if ($result->num_rows > 0) {
 
     run('/regfail', $routes);
 } else {
-    if (isset($_POST["submit"])) {
+    if (isset($_POST["regsubmit"])) {
 
         $uid = 1;
-        $phone = $_POST["phoneNumber"];
+        $phone = $_POST["phonenumber"];
         $password = $_POST["password"];
         $name = $_POST["name"];
 
-        $sql = "INSERT INTO  users(uid,phone,password,name) values ($uid,'$phone','$password','$name') ";
-
+        $sql = "INSERT INTO  users (uid,phone,password,name) values ($uid,'$phone','$password','$name') ";
+        echo $sql;
+        exit();
         $db->insert($sql);
 
         run('/regdone', $routes);

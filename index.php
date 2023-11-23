@@ -43,7 +43,7 @@ if (isset($_SESSION["id"])) {
                     <img src="media/logo.jpg" alt="IMG">
                 </div>
 
-                <form method="post" action="<?php echo run("/authuser", $routes) ?>"
+                <form class="login-container" method="post" action="<?php echo run("/authuser", $routes) ?>"
                     class="login100-form validate-form">
                     <span class="login100-form-title">
                         Member Login
@@ -51,6 +51,7 @@ if (isset($_SESSION["id"])) {
                     <br>
                     <center>
                         <p style="color:red"><?php echo $_GET["message"]; ?></p>
+                        <p style="color: red;"><?php echo $_GET["regfailedmessage"]; ?></p>
                     </center>
                     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
                         <input class="input100" type="text" name="phonenumber" placeholder="phone">
@@ -75,15 +76,15 @@ if (isset($_SESSION["id"])) {
                     </div>
                     <div class="text-center p-t-12">
                         <span class="txt1">
-                            Forgot
+
                         </span>
                         <a class="txt2" href="#">
 
                         </a>
                     </div>
 
-                    <div class="text-center p-t-136">
-                        <a class="txt2" href="#">
+                    <div class="text-center ">
+                        <a id="registernew" class="txt2" href="#">
                             Create your Account
                             <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
                         </a>
@@ -91,7 +92,62 @@ if (isset($_SESSION["id"])) {
 
 
                 </form>
+                <form class="register-container" method="post" action="<?php echo run("/regform", $routes) ?>"
+                    class="login100-form validate-form">
+                    <span class="login100-form-title">
+                        Student Registration
+                    </span>
+                    <br>
+                    <center><label>Input Your Name </label></center>
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <input class="input100" type="text" name="name" placeholder="name" required>
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <center><label>Phone </label></center>
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <input class="input100" type="text" name="phonenumber" placeholder="phone" required>
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <center><label>password </label></center>
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <input class="input100" id="password" type="password" name="password" placeholder="Password"
+                            required>
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
 
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <button type="submit" name="regsubmit" class="login100-form-btn">
+                            Registration
+                        </button>
+                    </div>
+                    <div class="text-center p-t-12">
+                        <span class="txt1">
+
+                        </span>
+                        <a class="txt2" href="#">
+
+                        </a>
+                    </div>
+
+                    <div class="text-center ">
+                        <a id="login" class="txt2" href="#">
+                            Login
+                            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
+
+                </form>
+                <br>
             </div>
         </div>
     </div>
@@ -109,7 +165,22 @@ if (isset($_SESSION["id"])) {
         });
     }
     </script>
+    <script>
+    document.querySelector(".register-container").style.display = "none";
+    document.getElementById("registernew").addEventListener("click", function() {
+        // Hide the login container
+        document.querySelector(".login-container").style.display = "none";
+        // Show the new container
+        document.querySelector(".register-container").style.display = "block";
+    });
 
+    document.getElementById("login").addEventListener("click", function() {
+        // Hide the login container
+        document.querySelector(".login-container").style.display = "block";
+        // Show the new container
+        document.querySelector(".register-container").style.display = "none";
+    });
+    </script>
 
 
     <!--===============================================================================================-->
