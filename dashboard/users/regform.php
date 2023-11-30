@@ -472,7 +472,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         <div class="col-md-6">
                             <div class="input-group">
                                 <label class="label">Phone Number</label>
-                                <input class="input--style-4" max="11" type="text" name="phone" required>
+                                <input class="input--style-4" max="11" type="text" value="<?php echo $_SESSION['phone'];?>" name="phone" required>
                             </div>
                         </div>
                     </div>
