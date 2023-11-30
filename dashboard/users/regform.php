@@ -3,7 +3,7 @@
 <?php
 if ($_SESSION["uid"] == 1) {
 ini_set('display_errors', 0);
-$uid = $_SESSION["uid"];
+$uid = $_SESSION["id"];
 $sql = "SELECT * from users_data where uid = $uid ";
 $result = $db->query($sql);
 if ($result->num_rows > 0) {

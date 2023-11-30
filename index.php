@@ -52,6 +52,7 @@ if (isset($_SESSION["id"])) {
                     <center>
                         <p style="color:red"><?php echo $_GET["message"]; ?></p>
                         <p style="color: red;"><?php echo $_GET["regfailedmessage"]; ?></p>
+                        <p style="color: green;"><?php echo $_GET["regmessage"]; ?></p>
 
                     </center>
                     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
@@ -109,7 +110,7 @@ if (isset($_SESSION["id"])) {
                     </div>
                     <center><label>Phone </label></center>
                     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="text" name="phonenumber" placeholder="phone" required>
+                        <input class="input100" type="number" name="phonenumber" placeholder="phone" required>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-phone" aria-hidden="true"></i>
