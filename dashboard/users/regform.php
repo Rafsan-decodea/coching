@@ -2,12 +2,12 @@
 
 <?php
 if ($_SESSION["uid"] == 1) {
-ini_set('display_errors', 0);
-$uid = $_SESSION["id"];
-$sql = "SELECT * from users_data where uid = $uid ";
-$result = $db->query($sql);
-if ($result->num_rows > 0) {
-    ?>
+    ini_set('display_errors', 0);
+    $uid = $_SESSION["id"];
+    $sql = "SELECT * from users_data where uid = $uid ";
+    $result = $db->query($sql);
+    if ($result->num_rows > 0) {
+        ?>
 
 <br><br>
 <table class="table table-striped table-bordered table-responsive">
@@ -366,7 +366,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-<?php include '../extra/fotter.php'; }} else { ?>
+<?php include '../extra/fotter.php';}} else {?>
 <div class=" p-t-130 p-b-100 font-poppins">
     <center>
         <caption>
@@ -398,7 +398,8 @@ document.addEventListener("DOMContentLoaded", function() {
                         <div class="col-md-6">
                             <div class="input-group">
                                 <label class="label">first name</label>
-                                <input class="input--style-4" type="text" value="<?php echo $_SESSION["name"]?>" name="firstname" required>
+                                <input class="input--style-4" type="text" value="<?php echo $_SESSION["name"] ?>"
+                                    name="firstname" required>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -412,7 +413,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         <div class="col-md-6">
                             <div class="input-group">
                                 <label class="label">Father Name</label>
-                                <input class="input--style-4" type="text"  name="fathername" required>
+                                <input class="input--style-4" type="text" name="fathername" required>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -426,7 +427,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         <div class="col-md-6">
                             <div class="input-group">
                                 <label class="label">Present Address</label>
-                                <input class="input--style-4" type="text"  name="presentaddress" required>
+                                <input class="input--style-4" type="text" name="presentaddress" required>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -451,11 +452,11 @@ document.addEventListener("DOMContentLoaded", function() {
                                 <label class="label">Gender</label>
                                 <div class="p-t-10">
                                     <label class="radio-container m-r-45">Male
-                                        <input type="radio" checked="checked" name="gender" required>
+                                        <input type="radio" checked="checked" value="male" name="gender" required>
                                         <span class="checkmark"></span>
                                     </label>
                                     <label class="radio-container">Female
-                                        <input type="radio" name="gender" required>
+                                        <input type="radio" value="female" name="gender" required>
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
@@ -472,7 +473,8 @@ document.addEventListener("DOMContentLoaded", function() {
                         <div class="col-md-6">
                             <div class="input-group">
                                 <label class="label">Phone Number</label>
-                                <input class="input--style-4" max="11" type="text" value="<?php echo $_SESSION['phone'];?>" name="phone" required>
+                                <input class="input--style-4" max="11" type="text"
+                                    value="<?php echo $_SESSION['phone']; ?>" name="phone" required>
                             </div>
                         </div>
                     </div>
@@ -502,7 +504,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <div class="input-group">
                         <div class="rs-select2 js-select-simple select--no-search">
                             <select style="color:black" name="subject[]" multiple="multiple" size="4" required>
-                                <option >ICT</option>
+                                <option>ICT</option>
                                 <option>Bangla</option>
                                 <option>English</option>
                                 <option>Physics</option>
@@ -515,36 +517,37 @@ document.addEventListener("DOMContentLoaded", function() {
                     </div>
 
                     <div class="input-group col-md-6">
-                        
+
                         <div>
 
                             <div class="p-t-15">
-                                <button class="btn btn--radius-2 btn--blue" type="submit" name="submit" required>Submit</button>
+                                <button class="btn btn--radius-2 btn--blue" type="submit" name="submit"
+                                    required>Submit</button>
                             </div>
                 </form>
-                <?php 
-                  if(isset($_POST["submit"])){
-                        $id = $_SESSION["id"];
-                        $fristname = $_POST["firstname"];
-                        $lastname = $_POST["lastname"];
-                        $birthday = $_POST["birthday"];
-                        $gender = $_POST["gender"];
-                        $fathername = $_POST["fathername"];
-                        $mothername = $_POST["mothername"];
-                        $presentaddress = $_POST["presentaddress"];
-                        $parmanentaddress = $_POST["parmanentaddress"];
-                        $email = $_POST["email"];
-                        $phone = $_POST["phone"];
-                        $subject = $_POST["subject"];
-                        $subject = implode(',', $subject);
-                        $sql = "insert into users_data (uid,lastname,gender,fathername,mothername,presentaddress,parmanentaddress,birthday,email,phone,subject) values ($id,'$lastname','$gender','$fathername','$mothername','$presentaddress','$parmanentaddress','$birthday','$email','$phone','$subject')";
-                        $db->insert($sql);
-                        $sql2 = "update users set name='$fristname' where id = $id";
-                        $db->update($sql2);
-                        $_SESSION["name"]= $fristname;
-                        echo " <meta http-equiv='refresh' content='0'>";
-                  }
-                ?>
+                <?php
+if (isset($_POST["submit"])) {
+        $id = $_SESSION["id"];
+        $fristname = $_POST["firstname"];
+        $lastname = $_POST["lastname"];
+        $birthday = $_POST["birthday"];
+        $gender = $_POST["gender"];
+        $fathername = $_POST["fathername"];
+        $mothername = $_POST["mothername"];
+        $presentaddress = $_POST["presentaddress"];
+        $parmanentaddress = $_POST["parmanentaddress"];
+        $email = $_POST["email"];
+        $phone = $_POST["phone"];
+        $subject = $_POST["subject"];
+        $subject = implode(',', $subject);
+        $sql = "insert into users_data (uid,lastname,gender,fathername,mothername,presentaddress,parmanentaddress,birthday,email,phone,subject) values ($id,'$lastname','$gender','$fathername','$mothername','$presentaddress','$parmanentaddress','$birthday','$email','$phone','$subject')";
+        $db->insert($sql);
+        $sql2 = "update users set name='$fristname' where id = $id";
+        $db->update($sql2);
+        $_SESSION["name"] = $fristname;
+        echo " <meta http-equiv='refresh' content='0'>";
+    }
+        ?>
 
             </div>
         </div>
@@ -555,6 +558,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <?php
 }
-include '../extra/fotter.php';
+    include '../extra/fotter.php';
 }
 ?>
