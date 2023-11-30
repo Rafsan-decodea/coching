@@ -19,12 +19,10 @@ if ($result->num_rows > 0) {
 
         $uid = 1;
         $phone = $_POST["phonenumber"];
-        $password = $_POST["password"];
+        $password = $_POST["regpassword"];
         $name = $_POST["name"];
 
         $sql = "INSERT INTO  users (uid,phone,password,name) values ($uid,'$phone','$password','$name') ";
-        echo $sql;
-        exit();
         $db->insert($sql);
 
         run('/regdone', $routes);

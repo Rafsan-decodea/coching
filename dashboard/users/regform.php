@@ -208,7 +208,7 @@ if ($result->num_rows > 0) {
 
             </td>
             <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    Edit Data
+                    <h6>Edit Data</h6>
                 </button></td>
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
