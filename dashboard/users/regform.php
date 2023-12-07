@@ -393,7 +393,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 </center>
                 <br>
 
-                <form method="POST" action="/dashboard/users/regform.php">
+                <form method="POST" action="/dashboard/users/regform.php" enctype="multipart/form-data">
                     <div class="row ">
                         <div class="col-md-6">
                             <div class="input-group">
@@ -515,38 +515,87 @@ document.addEventListener("DOMContentLoaded", function() {
                             <div class="select-dropdown"></div>
                         </div>
                     </div>
-
+                    <div class="mb-3">
+                        <label for="imageInput" class="form-label">Select Image</label>
+                        <small>(pic size must be with in 500 kb)</small>
+                        <input type="file" required name="image" class="form-control" id="imageInput" accept="image/*">
+                    </div>
+                    <div class="mb-3">
+                        <img height="100" width="100" id="imagePreview" src="" alt="Image Preview" class="img-fluid">
+                    </div>
                     <div class="input-group col-md-6">
+                        <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const imageInput = document.getElementById("imageInput");
+                            const imagePreview = document.getElementById("imagePreview");
 
+                            imageInput.addEventListener("change", function() {
+                                const file = imageInput.files[0];
+
+                                if (file) {
+                                    const reader = new FileReader();
+
+                                    reader.onload = function(e) {
+                                        imagePreview.src = e.target.result;
+                                    };
+
+                                    reader.readAsDataURL(file);
+                                } else {
+                                    imagePreview.src = "";
+                                }
+                            });
+                        });
+                        </script>
                         <div>
-
                             <div class="p-t-15">
                                 <button class="btn btn--radius-2 btn--blue" type="submit" name="submit"
                                     required>Submit</button>
                             </div>
                 </form>
                 <?php
-if (isset($_POST["submit"])) {
-        $id = $_SESSION["id"];
-        $fristname = $_POST["firstname"];
-        $lastname = $_POST["lastname"];
-        $birthday = $_POST["birthday"];
-        $gender = $_POST["gender"];
-        $fathername = $_POST["fathername"];
-        $mothername = $_POST["mothername"];
-        $presentaddress = $_POST["presentaddress"];
-        $parmanentaddress = $_POST["parmanentaddress"];
-        $email = $_POST["email"];
-        $phone = $_POST["phone"];
-        $subject = $_POST["subject"];
-        $subject = implode(',', $subject);
-        $sql = "insert into users_data (uid,lastname,gender,fathername,mothername,presentaddress,parmanentaddress,birthday,email,phone,subject) values ($id,'$lastname','$gender','$fathername','$mothername','$presentaddress','$parmanentaddress','$birthday','$email','$phone','$subject')";
-        $db->insert($sql);
-        $sql2 = "update users set name='$fristname' where id = $id";
-        $db->update($sql2);
-        $_SESSION["name"] = $fristname;
-        echo " <meta http-equiv='refresh' content='0'>";
-    }
+
+        if (isset($_POST["submit"])) {
+            $id = $_SESSION["id"];
+            $fristname = $_POST["firstname"];
+            $lastname = $_POST["lastname"];
+            $birthday = $_POST["birthday"];
+            $gender = $_POST["gender"];
+            $fathername = $_POST["fathername"];
+            $mothername = $_POST["mothername"];
+            $presentaddress = $_POST["presentaddress"];
+            $parmanentaddress = $_POST["parmanentaddress"];
+            $email = $_POST["email"];
+            $phone = $_POST["phone"];
+            $subject = $_POST["subject"];
+            $subject = implode(',', $subject);
+
+            if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+                $tempFile = $_FILES['image']['tmp_name'];
+                $randomName = 'image_' . uniqid() . '.jpg';
+                $targetFile = '../images/' . $randomName;
+                if ($_FILES["image"]["size"] > 500000) { // 500 KB in bytes
+                    echo "<a style='color:red'>Sorry, your file is too large. It must be under 500 KB</a>";
+                    exit();
+                }
+                if (move_uploaded_file($tempFile, $targetFile)) {
+
+                    $sql = "insert into users_data (uid,picture,lastname,gender,fathername,mothername,presentaddress,parmanentaddress,birthday,email,phone,subject,paymentstatus,payamount) values ($id,'$randomName','$lastname','$gender','$fathername','$mothername','$presentaddress','$parmanentaddress','$birthday','$email','$phone','$subject','0','500')";
+                    $db->insert($sql);
+                    $sql2 = "update users set name='$fristname' where id = $id";
+                    $db->update($sql2);
+                    $_SESSION["name"] = $fristname;
+                    echo " <meta http-equiv='refresh' content='0'>";
+
+                    ?>
+                <h4 style="color:green">Registration success!!! Please Refresh Page </h4>
+                <?php
+
+                } else {
+                    echo "Image upload failed.";
+                }
+            }
+
+        }
         ?>
 
             </div>

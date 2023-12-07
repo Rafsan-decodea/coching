@@ -158,12 +158,12 @@
 
                     <?php
 $id = $_SESSION["id"];
-    // $sql = "select picture from users_data  where uid = $id";
-    // $result = $db->query($sql);
-    //  while ($row = $result->fetch_assoc()) {
-    ?>
-                    <img height="100" width="100" src="<?php //if ($row["picture"] == "") {echo "/dashboard/dist/img/user2-160x160.jpg";} else {echo "/dashboard/images/" . $row["picture"];}
-    ?>" style="opacity: .9">
+    $sql = "select picture from users_data  where uid = $id";
+    $result = $db->query($sql);
+    while ($row = $result->fetch_assoc()) {
+        ?>
+                    <img height="100" width="100" src="<?php if ($row["picture"] == "") {echo "/dashboard/dist/img/user2-160x160.jpg";} else {echo "/dashboard/images/" . $row["picture"];}
+        ?>" style="opacity: .9">
 
                 </div>
                 <div class="info">
@@ -213,7 +213,7 @@ $id = $_SESSION["id"];
             </nav>
             <!-- /.sidebar-menu -->
         </div>
-        <?php }?>
+        <?php }}?>
         <?php
 if ($_SESSION["uid"] == 0) {
     ?>
