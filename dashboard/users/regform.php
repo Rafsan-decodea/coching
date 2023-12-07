@@ -21,6 +21,7 @@ if ($_SESSION["uid"] == 1) {
             <th scope="col">Present Address</th>
             <th scope="col">Parmanent Address</th>
             <th scope="col">Pay Amount</th>
+            <th scope="col">Subjects</th>
             <th scope="col">Payment Status</th>
             <th scope="col">Action/Trasection ID</th>
         </tr>
@@ -43,6 +44,15 @@ if ($_SESSION["uid"] == 1) {
             <td><?php echo $row["presentaddress"]; ?></td>
             <td><?php echo $row["parmanentaddress"]; ?></td>
             <td><?php echo $row["payamount"]; ?></td>
+            <td><?php
+$commaSeparatedValues = $row["subject"];
+            $valuesArray = explode(',', $commaSeparatedValues);
+
+            // Display or process each value in $valuesArray
+            foreach ($valuesArray as $value) {
+                echo $value . ',';
+            }
+            ?></td>
             <td>
                 <?php if ($row["paymentstatus"] == 3) {?>
                 <center>
@@ -86,15 +96,15 @@ if ($_SESSION["uid"] == 1) {
 
                         <?php
 
-            if (isset($_POST["bikassubmit"])) {
-                $getid = $_SESSION["id"];
-                $bkashid = $_POST["bkashid"];
-                $sql = "UPDATE users_data set bkashid='$bkashid',paymentstatus=1 where uid = $getid";
-                $db->insert($sql);
-                echo " <meta http-equiv='refresh' content='0'>";
-            }
+                if (isset($_POST["bikassubmit"])) {
+                    $getid = $_SESSION["id"];
+                    $bkashid = $_POST["bkashid"];
+                    $sql = "UPDATE users_data set bkashid='$bkashid',paymentstatus=1 where uid = $getid";
+                    $db->insert($sql);
+                    echo " <meta http-equiv='refresh' content='0'>";
+                }
 
-            ?>
+                ?>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
@@ -235,16 +245,12 @@ if ($_SESSION["uid"] == 1) {
                                         placeholder="Your Name">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">CurrentJob</label>
-                                    <input class="form-control" value="<?php echo $row["currentjob"] ?>"
-                                        name="currentjob" id="emailid" aria-describedby="emailHelp" Name
+                                    <label for="exampleInputEmail1">Mother Name</label>
+                                    <input class="form-control" value="<?php echo $row["mothername"] ?>"
+                                        name="mothername" id="emailid" aria-describedby="emailHelp" Name
                                         placeholder="Your Job">
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Batch</label>
-                                    <input class="form-control" value="<?php echo $row["batch"] ?>" name="batch"
-                                        id="emailid" aria-describedby="emailHelp" Name placeholder="Your batch">
-                                </div>
+
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Present Address</label>
                                     <input class="form-control" value="<?php echo $row["presentaddress"]; ?>"
@@ -268,11 +274,7 @@ if ($_SESSION["uid"] == 1) {
                                         src="/dashboard/images/<?php echo $row["picture"]; ?>" alt="Image Preview"
                                         class="img-fluid">
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Children</label>
-                                    <input class="form-control" value="<?php echo $row["children"]; ?>" name="children"
-                                        id="emailid" aria-describedby="emailHelp" Name placeholder="Children">
-                                </div>
+
                                 <button onclick="" data-bind="" name="submit" class="btn btn-primary">update</button>
                             </form>
                         </div>
@@ -288,13 +290,10 @@ if ($_SESSION["uid"] == 1) {
                     $id = $_SESSION["id"];
                     $name = $_POST["name"];
                     $fathername = $_POST["fathername"];
-                    $batch = $_POST["batch"];
+                    $mothername = $_POST["mothername"];
                     //$gender = $_POST["gender"];
                     $presentaddress = $_POST["presentaddress"];
                     $parmanentaddress = $_POST["parmanentaddress"];
-                    $children = $_POST["children"];
-                    $currentjob = $_POST["currentjob"];
-                    $payamount = 700 + $children * 400;
                     $randomName = '';
                     $existingImagePath = $_SERVER['DOCUMENT_ROOT'] . '/dashboard/images/' . $row["picture"];
 
@@ -309,7 +308,7 @@ if ($_SESSION["uid"] == 1) {
                             }
                             if (move_uploaded_file($tempFile, $targetFile)) {
 
-                                $sql = "UPDATE  users_data set batch='$batch',fathername='$fathername',presentaddress='$presentaddress',parmanentaddress='$parmanentaddress',children=$children,picture='$randomName',currentjob='$currentjob',payamount=$payamount where uid = $id";
+                                $sql = "UPDATE  users_data set mothername='$mothername',fathername='$fathername',presentaddress='$presentaddress',parmanentaddress='$parmanentaddress',picture='$randomName' where uid = $id";
                                 unlink($existingImagePath);
                                 $db->update($sql);
                                 $getid = $_SESSION["id"];
@@ -325,7 +324,7 @@ if ($_SESSION["uid"] == 1) {
                         }
                     } else {
                         $getid = $_SESSION["id"];
-                        $sql = "UPDATE  users_data set batch='$batch',fathername='$fathername',presentaddress='$presentaddress',parmanentaddress='$parmanentaddress',children=$children,currentjob='$currentjob',payamount=$payamount where uid = $getid";
+                        $sql = "UPDATE  users_data set mothername='$mothername',fathername='$fathername',presentaddress='$presentaddress',parmanentaddress='$parmanentaddress' where uid = $getid";
                         $db->update($sql);
                         $sql2 = "UPDATE  users set name='$name' where id=$getid";
                         $db->update($sql2);
@@ -478,7 +477,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             </div>
                         </div>
                     </div>
-                    <label class="label">Subject </label>
+                    <label class="label">Subject (per sub 100/-)</label>
                     <style>
                     select[multiple] {
                         width: 200px;
@@ -567,6 +566,7 @@ document.addEventListener("DOMContentLoaded", function() {
             $email = $_POST["email"];
             $phone = $_POST["phone"];
             $subject = $_POST["subject"];
+            $cost = count($subject) * 100;
             $subject = implode(',', $subject);
 
             if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
@@ -579,7 +579,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
                 if (move_uploaded_file($tempFile, $targetFile)) {
 
-                    $sql = "insert into users_data (uid,picture,lastname,gender,fathername,mothername,presentaddress,parmanentaddress,birthday,email,phone,subject,paymentstatus,payamount) values ($id,'$randomName','$lastname','$gender','$fathername','$mothername','$presentaddress','$parmanentaddress','$birthday','$email','$phone','$subject','0','500')";
+                    $sql = "insert into users_data (uid,picture,lastname,gender,fathername,mothername,presentaddress,parmanentaddress,birthday,email,phone,subject,paymentstatus,payamount) values ($id,'$randomName','$lastname','$gender','$fathername','$mothername','$presentaddress','$parmanentaddress','$birthday','$email','$phone','$subject','0','$cost')";
                     $db->insert($sql);
                     $sql2 = "update users set name='$fristname' where id = $id";
                     $db->update($sql2);

@@ -148,7 +148,6 @@
                 style="opacity: .8">
             <span class="brand-text font-weight-light">Coaching</span>
         </a>
-
         <!-- Sidebar -->
         <?php if ($_SESSION["uid"] == 1) {?>
         <div class="sidebar">
@@ -159,14 +158,14 @@
                     <?php
 $id = $_SESSION["id"];
     $sql = "select picture from users_data  where uid = $id";
+
     $result = $db->query($sql);
     while ($row = $result->fetch_assoc()) {
         ?>
-                    <img height="100" width="100" src="<?php if ($row["picture"] == "") {echo "/dashboard/dist/img/user2-160x160.jpg";} else {echo "/dashboard/images/" . $row["picture"];}
-        ?>" style="opacity: .9">
-
+                    <img height="100" width="100"
+                        src="<?php if ($row["picture"] == "") {echo "/dashboard/dist/img/user2-160x160.jpg";} else {echo "/dashboard/images/" . $row["picture"];}}?>" />
                 </div>
-                <div class="info">
+                <div class=" info">
                     <a href="#" class="d-block"><?php echo $_SESSION['name'] ?></a>
                 </div>
             </div>
@@ -213,7 +212,7 @@ $id = $_SESSION["id"];
             </nav>
             <!-- /.sidebar-menu -->
         </div>
-        <?php }}?>
+        <?php }?>
         <?php
 if ($_SESSION["uid"] == 0) {
     ?>
