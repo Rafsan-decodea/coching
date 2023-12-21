@@ -79,7 +79,7 @@ button {
         <?php 
          if (isset($_POST["setnewpassword"]))
          {
-            $id = $_SESSION["id"];
+            $id = $_SESSION["theid"];
             
             $sql = "UPDATE users SET password = '".$_POST["newpassword"]."' WHERE id = $id";
             echo $sql;
