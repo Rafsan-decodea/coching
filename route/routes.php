@@ -47,5 +47,9 @@ return [
         echo "/logout.php";
 
     },
+    '/course' => function () {
+        echo "/dashboard/users/course.php";
+
+    },
 
 ];

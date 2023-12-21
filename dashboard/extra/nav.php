@@ -199,6 +199,27 @@ $id = $_SESSION["id"];
                         </a>
 
                     </li>
+                    <?php 
+                $id = $_SESSION["id"];
+                $sql = "select * from users_data  where uid = $id";
+            
+                $result = $db->query($sql);
+                $row = $result->fetch_assoc();
+                if ($row["paymentstatus"]==2)
+                {
+                ?>
+                    <li class="nav-item ">
+                        <a href="<?php run('/course', $routes)?>"
+                            class="nav-link <?php echo $current_page == 'course.php' ? 'active' : null ?>">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Courses
+                                <!-- <i class="right fas fa-angle-left"></i> -->
+                            </p>
+                        </a>
+
+                    </li>
+                    <?php }?>
                     <li class="nav-item">
                         <a href="<?php run('/logout', $routes)?>" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>

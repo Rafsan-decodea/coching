@@ -39,8 +39,7 @@ if ($_SESSION["uid"] == 0) {
             <th scope="col">picture</th>
             <th scope="col">Name</th>
             <th scope="col">Phone</th>
-            <th scope="col">batch</th>
-            <th scope="col">Children</th>
+            <th scope="col">subject</th>
             <th scope="col">Total Pay</th>
             <th scope="col">Bkash Number</th>
             <th scope="col">Bkash id</th>
@@ -66,10 +65,9 @@ if ($_SESSION["uid"] == 0) {
             <td><?php $id = $row["uid"];
         $data = $db->query("select phone from users where id = $id ");while ($row1 = $data->fetch_assoc()) {echo $row1["phone"];}
         $data->free();?>
-            <td><?php echo $row["batch"] ?></td>
-            <td><?php echo $row["children"] ?></td>
+            <td><?php echo $row["phone"] ?></td>
             <td><?php echo $row["payamount"] ?></td>
-            <td><?php echo $row["bikasnumber"] ?></td>
+            <td><?php echo $row["bkashnumber"] ?></td>
             <td><?php echo $row["bkashid"] ?></td>
             <td>
                 <p class='badge text bg-primary'>Done</p>
@@ -85,8 +83,7 @@ if ($_SESSION["uid"] == 0) {
             <th scope="col">picture</th>
             <th scope="col">Name</th>
             <th scope="col">Phone</th>
-            <th scope="col">batch</th>
-            <th scope="col">Children</th>
+            <th scope="col">subject</th>
             <th scope="col">Total Pay</th>
             <th scope="col">Bkash</th>
             <th scope="col">Bkash id</th>
@@ -113,8 +110,7 @@ if ($_SESSION["uid"] == 0) {
             <td><?php $id = $row["uid"];
         $data = $db->query("select phone from users where id = $id ");while ($row1 = $data->fetch_assoc()) {echo $row1["phone"];}
         $data->free();?>
-            <td><?php echo $row["batch"] ?></td>
-            <td><?php echo $row["children"] ?></td>
+            <td><?php echo $row["phone"] ?></td>
             <td><?php echo $row["payamount"] ?></td>
             <td><?php echo $row["bikasnumber"] ?></td>
             <td><?php echo $row["bkashid"] ?></td>
@@ -170,7 +166,7 @@ if (isset($_POST["submit"])) {
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <h3>পেমেন্ট রিজেক্ট করার কারণ বর্ণনা করুন ক্লায়েন্ট কে <br><br>
+                                <h3>পেমেন্ট রিজেক্ট করার কারণ বর্ণনা করুন <br><br>
 
                                 </h3>
                                 <form id="payform" method="post" action="<?php run('/paymentinfo', $routes)?>"
@@ -220,8 +216,7 @@ if (isset($_POST["submit"])) {
             <th scope="col">picture</th>
             <th scope="col">Name</th>
             <th scope="col">Phone</th>
-            <th scope="col">batch</th>
-            <th scope="col">Children</th>
+            <th scope="col">subject</th>
             <th scope="col">Total Pay</th>
             <th scope="col">Bkash Number</th>
             <th scope="col">Bkash id</th>
@@ -248,8 +243,7 @@ if (isset($_POST["submit"])) {
             <td><?php $id = $row["uid"];
         $data = $db->query("select phone from users where id = $id ");while ($row1 = $data->fetch_assoc()) {echo $row1["phone"];}
         $data->free();?>
-            <td><?php echo $row["batch"] ?></td>
-            <td><?php echo $row["children"] ?></td>
+            <td><?php echo $row["phone"] ?></td>
             <td><?php echo $row["payamount"] ?></td>
             <td><?php echo $row["bikasnumber"] ?></td>
             <td><?php echo $row["bkashid"] ?></td>

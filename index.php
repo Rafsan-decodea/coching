@@ -89,6 +89,10 @@ if (isset($_SESSION["id"])) {
                         <a id="registernew" class="txt2" href="#">
                             Create your Account
                             <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                        </a><br>
+                        <a class="txt2" href="/forgot/forgotpass.php">
+                            Forgot Password
+                            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
                         </a>
                     </div>
 

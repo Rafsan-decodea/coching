@@ -15,11 +15,8 @@ if ($_SESSION["uid"] == 0) {
             <th scope="col">Phone</th>
             <th scope="col">Father Name</th>
             <th scope="col">gender</th>
-            <th scope="col">batch</th>
             <th scope="col">Present Address</th>
             <th scope="col">Parmanent Address</th>
-            <th scope="col">Children</th>
-            <th scope="col">Current Job</th>
         </tr>
         <?php
 
@@ -44,11 +41,8 @@ if ($_SESSION["uid"] == 0) {
             </td>
             <td><?php echo $row["fathername"] ?></td>
             <td><?php echo $row["gender"] ?></td>
-            <td><?php echo $row["batch"] ?></td>
             <td><?php echo $row["presentaddress"] ?></td>
             <td><?php echo $row["parmanentaddress"] ?></td>
-            <td><?php echo $row["children"] ?></td>
-            <td><?php echo $row["currentjob"] ?></td>
         </tr>
         <?php }?>
     </tbody>

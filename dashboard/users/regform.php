@@ -150,8 +150,8 @@ $commaSeparatedValues = $row["subject"];
                         </div>
                         <div class="modal-body">
                             <h3>Bkash_Payment_INFO
-                                জামাল উদ্দিন আহাম্মদ (সহকারী প্রধান শিক্ষক) : <br><br>
-                                <center><mark>01927163143</mark></center>
+                                Masum niloy <br><br>
+                                <center><mark>01776-657502</mark></center>
                             </h3><br>
                             <center>
                                 <h4><?php echo $row["payamount"]; ?>/- এই নম্বর এ বিকাশ করে ট্রান্সেকশন আইডি টি সাবমিট
@@ -198,7 +198,7 @@ $commaSeparatedValues = $row["subject"];
                     $getid = $_SESSION["id"];
                     $bkashid = $_POST["bkashid"];
                     $bkashnumber = $_POST["bkashnumber"];
-                    $sql = "UPDATE users_data set bkashid='$bkashid',bikasnumber='$bkashnumber',paymentstatus=1 where uid = $getid";
+                    $sql = "UPDATE users_data set bkashid='$bkashid',bkashnumber='$bkashnumber',paymentstatus=1 where uid = $getid";
                     $db->insert($sql);
                     echo " <meta http-equiv='refresh' content='0'>";
                 }
@@ -477,7 +477,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             </div>
                         </div>
                     </div>
-                    <label class="label">Subject (per sub 100/-)</label>
+                    <label class="label">Subject (per sub 200/-)</label>
                     <style>
                     select[multiple] {
                         width: 200px;
@@ -566,7 +566,7 @@ document.addEventListener("DOMContentLoaded", function() {
             $email = $_POST["email"];
             $phone = $_POST["phone"];
             $subject = $_POST["subject"];
-            $cost = count($subject) * 100;
+            $cost = count($subject) * 200;
             $subject = implode(',', $subject);
 
             if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
