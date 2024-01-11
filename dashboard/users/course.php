@@ -10,9 +10,15 @@ if ($_SESSION["uid"] == 1) {
 ?>
 
 <?php if($row["paymentstatus"]==2) {?>
-
-Comming Soon ....
-
+<h1>Your Course From Private youtube Channel </h1><br>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/DWdAziaDwWc?autoplay=1&mute=1">
+</iframe>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/DWdAziaDwWc?autoplay=1&mute=1">
+</iframe>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/DWdAziaDwWc?autoplay=1&mute=1">
+</iframe>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/DWdAziaDwWc?autoplay=1&mute=1">
+</iframe>
 <?php }?>
 
 

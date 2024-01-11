@@ -245,7 +245,7 @@ if (isset($_POST["submit"])) {
         $data->free();?>
             <td><?php echo $row["phone"] ?></td>
             <td><?php echo $row["payamount"] ?></td>
-            <td><?php echo $row["bikasnumber"] ?></td>
+            <td><?php echo $row["bkashnumber"] ?></td>
             <td><?php echo $row["bkashid"] ?></td>
             <td>
                 <p class='badge text bg-danger'>Reject</p>
