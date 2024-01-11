@@ -132,4 +132,5 @@ if ($_SESSION["uid"] == 0) {
     </div>
 
 </div>
-<?php }?>
+
+<?php include 'extra/fotter.php'; }?>
